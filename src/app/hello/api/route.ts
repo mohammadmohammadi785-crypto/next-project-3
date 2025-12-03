@@ -1,3 +1,3 @@
-export default function GET() {
+export function GET() {
   return new Response("hello");
 }
