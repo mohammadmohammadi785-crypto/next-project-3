@@ -5,15 +5,12 @@ export function GET() {
 export async function POST(request: Request) {
   const data = await request.json();
   const newBlog = {
-    id: data.id,
+    id: blog.length + 1,
     text: data.text,
   };
-  blog.push();
-  return (
-    Response.json(newBlog),
-    {
-      headers: { "content-type": "application/json" },
-      status: 200,
-    }
-  );
+  blog.push(newBlog);
+  return new Response(JSON.stringify(newBlog), {
+    headers: { "content-type": "application/json" },
+    status: 200,
+  });
 }
