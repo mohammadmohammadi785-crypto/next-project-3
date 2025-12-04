@@ -1,3 +1,16 @@
+import { blog } from "@/app/blogs/posts";
 export function GET() {
-  return new Response("Hello from user api");
+  return Response.json(blog);
+}
+export async function POST(request: Request) {
+  const data = await request.json();
+  const newBlog = {
+    id: blog.length + 1,
+    text: data.text,
+  };
+  blog.push(newBlog);
+  return new Response(JSON.stringify(newBlog), {
+    headers: { "content-type": "application/json" },
+    status: 200,
+  });
 }
