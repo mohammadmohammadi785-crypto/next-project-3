@@ -1,6 +1,6 @@
 import { blog } from "./posts";
 export function GET() {
-  return new Response(JSON.stringify(blog));
+  return Response.json(blog);
 }
 export async function POST(request: Request) {
   const data = await request.json();
@@ -9,7 +9,11 @@ export async function POST(request: Request) {
     text: data.text,
   };
   blog.push();
-  return new Response(JSON.stringify(newBlog), {
-    headers: { "content-type": "application/json" },
-  });
+  return (
+    Response.json(newBlog),
+    {
+      headers: { "content-type": "application/json" },
+      status: 200,
+    }
+  );
 }
