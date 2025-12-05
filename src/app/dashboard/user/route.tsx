@@ -6,6 +6,7 @@ export async function POST(request: Request) {
   const data = await request.json();
   const newBlog = {
     id: blog.length + 1,
+    name: data.name,
     text: data.text,
   };
   blog.push(newBlog);
