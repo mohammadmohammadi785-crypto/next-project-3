@@ -1,3 +1,17 @@
+import { blog } from "../blogs/posts";
+
 export function GET() {
-  return new Response("Hello from dashboard api");
+  return Response.json(blog);
+}
+export async function POST(request: Request) {
+  const data = await request.json();
+  const newBlog = {
+    id: blog.length + 1,
+    text: data.text,
+  };
+  blog.push(newBlog);
+  return new Response(JSON.stringify(newBlog), {
+    headers: { "content-type": "application/json" },
+    status: 200,
+  });
 }
