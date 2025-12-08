@@ -7,4 +7,3 @@ export async function GET(
   const blogs = blog.find((blog) => blog.id === parseInt(id));
   return Response.json(blogs);
 }
-
